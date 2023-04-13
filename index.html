@@ -11,12 +11,15 @@
                 src: url("Nunito-Regular.ttf");
             }
             body {
-                background-color: rgb(37, 37, 38);
+                background: url("images/bg.png") no-repeat center fixed;
+                background-size: cover;
                 font-family: Nunito, Calibri;
                 font-weight: lighter;
+                overflow: hidden;
             }
             button {
                 background-color: rgb(245, 245, 245);
+                font-family: Nunito, Calibri;
                 box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
                 border-radius: 8px;
                 font-size: large;
@@ -30,6 +33,7 @@
                 top: 50%;
                 transform: translate(-50%, -50%);
                 padding: 10px;
+                margin: 10px;
                 background-color: white;
                 border-radius: 8px;
                 text-align: center;
@@ -40,8 +44,8 @@
     </head>
     <body>
         <div class="center">
-            <img id="toro" src="images/toro.png">
-            <br><br>
+            <img id="toro" style="width: 50%; height: 50%;" src="images/toro.png">
+            <br>
             <audio id="audio" controls="true" autoplay="false" loop="true">
                 <source src="audio/charliesinferno.mp3" type="audio/mpeg">
                 seu navegador não tem suporte a áudio.
@@ -54,7 +58,7 @@
                     document.getElementById("toro").src = "images/toro.gif";
                 });
             </script>
-            <br><br>
+            <br>
             <span style="font-size: x-large; font-weight: bold;">bem-vindo a minha página!</span>
             <br>
             <span style="font-size: large;">links:</span>
