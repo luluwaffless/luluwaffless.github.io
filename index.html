@@ -5,29 +5,64 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>luca4s - Um "desenvolvedor" sem futuro.</title>
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito"/>
-        <link rel="stylesheet" type="text/css" href="index.css"/>
+        <style>
+            @font-face {
+                font-family: Nunito;
+                src: url("Nunito-Regular.ttf");
+            }
+            body {
+                background-color: rgb(37, 37, 38);
+                font-family: Nunito, Calibri;
+                font-weight: lighter;
+            }
+            button {
+                background-color: rgb(245, 245, 245);
+                box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+                border-radius: 8px;
+                font-size: large;
+                border: none;
+                padding: 5px;
+                margin: 5px;
+            }
+            .center {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                padding: 10px;
+                background-color: white;
+                border-radius: 8px;
+                text-align: center;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+        </style>
         <link rel="icon" href="images/favicon.ico">
     </head>
     <body>
         <div class="center">
-            <img id="omori" src="images/omori.png">
+            <img id="toro" src="images/toro.png">
             <br><br>
             <audio id="audio" controls="true" autoplay="false" loop="true">
-                <source src="audio/palmtreepanicpmix.mp3" type="audio/mpeg">
-                Your browser does not support the audio tag.
+                <source src="audio/charliesinferno.mp3" type="audio/mpeg">
+                seu navegador não tem suporte a áudio.
             </audio>
-            <script type="text/javascript" src="index.js"></script>
+            <script type="text/javascript">
+                document.getElementById("audio").addEventListener("pause", function() {
+                    document.getElementById("toro").src = "images/toro.png";
+                });
+                document.getElementById("audio").addEventListener("play", function() {
+                    document.getElementById("toro").src = "images/toro.gif";
+                });
+            </script>
             <br><br>
             <span style="font-size: x-large; font-weight: bold;">bem-vindo a minha página!</span>
             <br>
             <span style="font-size: large;">links:</span>
             <div>
-                <button onclick="window.location.href = `/rbb-countdown`">RB Battles Countdown</button><br>
                 <button onclick="window.location.href = `//github.com/luca4s`">GitHub</button><br>
-                <button onclick="window.location.href = `/jogo-do-botao`">Jogo do botão</button><br>
-                <button onclick="window.location.href = `/countdown`">Countdown</button><br>
+                <button onclick="window.location.href = `/countdown`">Contagem regressiva</button><br>
                 <button onclick="window.location.href = `/downloads`">Downloads</button><br>
+                <button onclick="window.location.href = `/rbb-countdown`">RBB Countdown</button><br>
             </div>
         </div>
     </body>

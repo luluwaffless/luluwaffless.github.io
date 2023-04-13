@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title id="head.title">Contagem regressiva</title>
+        <style>
+            @font-face {
+                font-family: Nunito;
+                src: url("Nunito-Regular.ttf");
+            }
+            body {
+                background-color: rgb(25, 25, 25);
+                color: white;
+                font-family: Nunito, Calibri;
+                font-weight: lighter;
+            }
+            button {
+                background-color: rgb(245, 245, 245);
+                box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+                border-radius: 8px;
+                font-size: large;
+                border: none;
+                padding: 5px;
+                margin: 2px;
+            }
+            input {
+                background-color: rgb(255, 255, 255);
+                box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+                border-radius: 8px;
+                font-size: large;
+                border: none;
+                padding: 5px;
+                margin: 2px;
+            }
+            .center {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                padding: 10px;
+                background-color: rgb(37, 37, 38);
+                border-radius: 8px;
+                text-align: center;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+        </style>
+        <link rel="icon" type="image/x-icon" href="images/favicon.png">
+        <script type="text/javascript">
+            var distance = 0;
+            var CountDate = "";
+            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+            function startCountdown(arg1) {
+                CountDate = `${months[parseInt(arg1.substring(5, 7)) - 1]} ${arg1.substring(8,10)} ${arg1.substring(0, 4)}, ${arg1.substring(12, 17)}:00`;
+                document.getElementById("head.title").innerHTML = "Contagem regressiva para: " + CountDate;
+                document.getElementById("time.title").innerHTML = "Contagem regressiva para: " + CountDate;
+                document.getElementById("select").style = "display: none;";
+                document.getElementById("counter").style = "";
+
+                var countDownDate = new Date(CountDate).getTime();
+                var x = setInterval(function() {
+                    var now = new Date().getTime();
+                    distance = countDownDate - now;
+                    var time = {dias: Math.floor(distance / (1000 * 60 * 60 * 24)), horas: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)), minutos: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)), segundos: Math.floor((distance % (1000 * 60)) / 1000)};
+                    for (var i in time) {
+                        var v = time[i];
+                        document.getElementById(i).innerHTML = `${v} ${i}`;
+                    };
+                    if (distance < 1000) {
+                        var done = new Audio("audios/done.mp3")
+                        done.play()
+                        document.getElementById("head.title").innerHTML = "Countdown";
+                        document.getElementById("time.title").innerHTML = "";
+                        document.getElementById("select").style = "";
+                        document.getElementById("counter").style = "display: none;";
+                        clearInterval(x);
+                    };
+                }, 1);
+            };
+        </script>
+    </head>
+    <body>
+        <div class="center">
+            <div id="select">
+                <span style="font-weight: bold; font-size: larger;">Selecione uma data e hora:</span>
+                <br>
+                <input type="date" id="date" name="date" required>
+                <input type="time" id="time" name="time" required>
+                <br>
+                <button onclick='startCountdown(`${document.getElementById("date").value}, ${document.getElementById("time").value}`)'>OK</button>
+            </div>
+            <div id="time" style="font-size: larger;">
+                <span id="time.title" style="font-weight: bold;"></span>
+                <div id="counter" style="display: none;">
+                    <span id="dias"></span><br>
+                    <span id="horas"></span><br>
+                    <span id="minutos"></span><br>
+                    <span id="segundos"></span><br>
+                </span>
+            </div>
+        </div>
+    </body>
+</html>
