@@ -40,24 +40,27 @@
                 box-shadow: 0px 0px 10px #000000;
                 background-color: rgb(37, 37, 38);
             }
+            #videos {
+                display: inline-block;
+            }
             #video {
                 padding: 10px;
                 margin: 10px;
                 border-radius: 10px;
                 box-shadow: 0px 0px 10px #000000;
                 background-color: rgb(57, 57, 58);
-                width: 100%;
             }
         </style>
     </head>
     <body>
         <div id="center">
             <a href="https://luca4s.github.io/watch" style="font-weight: bold; font-size: large;">watch ▶</a><br>
+            <div id="videos"></div>
         </div>
         <script type="text/javascript">
             const query = new URLSearchParams(window.location.search);
             if (query.get("v")) {
-                document.getElementById("center").innerHTML += `<video controls autoplay><source src="https://sleepylucapis.herokuapp.com/watch?v=${query.get("v")}" type="video/mp4">loading...</video>`
+                document.getElementById("videos").innerHTML += `<video controls autoplay><source src="https://sleepylucapis.herokuapp.com/watch?v=${query.get("v")}" type="video/mp4">loading...</video>`
             } else {
                 $.ajax({
                     url: "https://sleepylucapis.herokuapp.com/watch",
@@ -68,7 +71,7 @@
                         data["videos"].forEach(video => {
                             videoelements += `<div id="video"><a href="?v=${video["url"]}"><img src="https://sleepylucapis.herokuapp.com/watch?i=${video["url"]}"><br><span>${video["name"]}</span></a></div>`
                         });
-                        document.getElementById("center").innerHTML += videoelements
+                        document.getElementById("videos").innerHTML += videoelements
                     }
                 });
             }
