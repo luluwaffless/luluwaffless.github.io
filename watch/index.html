@@ -44,14 +44,19 @@
             if (query.get("v")) {
                 document.getElementById("center").innerHTML += `<video controls autoplay><source id="video" src="https://sleepylucapis.herokuapp.com/watch?v=${query.get("v")}" type="video/mp4">loading...</video>`
             } else {
-                $.getJSON("https://sleepylucapis.herokuapp.com/watch", function(data) {
-                    var videoelements = ""
-                    data["videos"].forEach(video => {
-                        videoelements += `<a href="?v=${video["url"]}"><img src="https://sleepylucapis.herokuapp.com/watch?i=${video["url"]}"><br><span>${video["name"]}</span></a>`
-                    });
-                    document.getElementById("center").innerHTML += videoelements
+                $.ajax({
+                    url: "https://sleepylucapis.herokuapp.com/watch",
+                    contentType: "application/json",
+                    method: "GET",
+                    success: function(data) {
+                        var videoelements = ""
+                        data["videos"].forEach(video => {
+                            videoelements += `<a href="?v=${video["url"]}"><img src="https://sleepylucapis.herokuapp.com/watch?i=${video["url"]}"><br><span>${video["name"]}</span></a>`
+                        });
+                        document.getElementById("center").innerHTML += videoelements
+                    }
                 });
-            };
+            }
         </script>
     </body>
 </html>
