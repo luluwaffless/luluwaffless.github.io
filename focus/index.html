@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>focus</title>
+        <style>
+            body {
+                color: #dcdcdc;
+                background-color: #4D4043;
+                font-family: 'Courier New', Courier, monospace;
+                text-align: center;
+            }
+            button {
+                font-family: 'Courier New', Courier, monospace;
+                color: #dcdcdc;
+                background-color: #191516;
+                border: none;
+            }
+            select {
+                font-family: 'Courier New', Courier, monospace;
+                color: #dcdcdc;
+                background-color: #191516;
+                border: none;
+            }
+            .player {
+                background-color: #191516;
+                border-radius: 10px;
+                padding: 10px;
+                position: absolute;
+                bottom: 0%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .center {
+                background-color: #191516;
+                border-radius: 10px;
+                padding: 10px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="center">
+            <span style="font-size: xx-large;" id="time">00:00:00</span><br>
+            <span style="font-size: small;" id="date">dia, DD/MM/AAAA</span>
+            <script>
+                const time = document.getElementById("time");
+                const date = document.getElementById("date");
+                const week = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta"];
+                setInterval(function() {
+                    var currentDate = new Date();
+                    time.innerHTML = `${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')}`;
+                    date.innerHTML = `${week[currentDate.getDay()]}, ${currentDate.getDate().toString().padStart(2, '0')}/${currentDate.getMonth().toString().padStart(2, '0')}/${currentDate.getFullYear()}`;
+                }, -1000);
+            </script>
+        </div>
+        <div class="player">
+            <select id="type">
+                <option value="bluewave">bluewave</option>
+                <option value="piano">piano</option>
+                <option value="natureza">natureza</option>
+            </select>
+            <button id="play">⏵</button>
+            <script>
+                const play = document.getElementById("play");
+                const type = document.getElementById("type");
+                var audio = new Audio(`${type.value}.mp3`);
+                var playing = false;
+                play.addEventListener("click", function() {
+                    playing = !playing;
+                    play.innerHTML = (playing)?"⏸":"⏵";
+                    if (playing) {
+                        audio.loop = true;
+                        audio.play();
+                    } else {
+                        audio.pause();
+                    };
+                });
+                type.addEventListener("change", function() {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    audio = new Audio(`${type.value}.mp3`);
+                    if (playing) {
+                        audio.loop = true;
+                        audio.play();
+                    };
+                });
+            </script>
+        </div>
+    </body>
+</html>
