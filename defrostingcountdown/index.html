@@ -6,15 +6,19 @@
         <title>defrosting countdown</title>
         <link rel="icon" type="image/x-icon" href="ice.png">
         <style id="style">
+            @font-face {
+                font-family: Nunito;
+                src: url("//luca4s.github.io/Nunito-Regular.ttf");
+            }
             body {
                 background-color: white;
                 color: black;
-                font-family: cursive;
+                font-family: Nunito;
             }
             option {
                 background-color: white;
                 color: black;
-                font-family: cursive;
+                font-family: Nunito;
             }
             select {
                 color: black;
@@ -22,7 +26,7 @@
                 border-radius: 4px;
                 background-image: linear-gradient(white, lightgray);
                 border: 1px solid gray;
-                font-family: cursive;
+                font-family: Nunito;
             }
             input {
                 background-color: white;
@@ -30,7 +34,7 @@
                 padding: 1px;
                 border-radius: 4px;
                 border: 1px solid gray;
-                font-family: cursive;
+                font-family: Nunito;
             }
             input[type="file"] {
                 display: none;
@@ -41,7 +45,7 @@
                 border-radius: 4px;
                 background-image: linear-gradient(white, lightgray);
                 border: 1px solid gray;
-                font-family: cursive;
+                font-family: Nunito;
             }
             .upload {
                 color: black;
@@ -49,7 +53,7 @@
                 border-radius: 4px;
                 background-image: linear-gradient(white, lightgray);
                 border: 1px solid gray;
-                font-family: cursive;
+                font-family: Nunito;
             }
         </style>
         <style id="player.style">
@@ -141,15 +145,19 @@
             });
             darkmode.addEventListener("change", function() {
                 if (this.checked) {
-                    style.innerHTML = `body {
+                    style.innerHTML = `@font-face {
+    font-family: Nunito;
+    src: url("Nunito-Regular.ttf");
+}
+body {
     background-color: black;
     color: white;
-    font-family: cursive;
+    font-family: Nunito;
 }
 option {
     background-color: black;
     color: white;
-    font-family: cursive;
+    font-family: Nunito;
 }
 select {
     color: white;
@@ -157,7 +165,7 @@ select {
     border-radius: 4px;
     background-image: linear-gradient(gray, black);
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }
 input {
     background-color: black;
@@ -165,7 +173,7 @@ input {
     padding: 1px;
     border-radius: 4px;
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }
 input[type="file"] {
     display: none;
@@ -176,7 +184,7 @@ button {
     border-radius: 4px;
     background-image: linear-gradient(gray, black);
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }
 .upload {
     color: white;
@@ -184,18 +192,22 @@ button {
     border-radius: 4px;
     background-image: linear-gradient(gray, black);
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }`
                 } else {
-                    style.innerHTML = `body {
+                    style.innerHTML = `@font-face {
+    font-family: Nunito;
+    src: url("Nunito-Regular.ttf");
+}
+body {
     background-color: white;
     color: black;
-    font-family: cursive;
+    font-family: Nunito;
 }
 option {
     background-color: white;
     color: black;
-    font-family: cursive;
+    font-family: Nunito;
 }
 select {
     color: black;
@@ -203,7 +215,7 @@ select {
     border-radius: 4px;
     background-image: linear-gradient(white, lightgray);
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }
 input {
     background-color: white;
@@ -211,7 +223,7 @@ input {
     padding: 1px;
     border-radius: 4px;
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }
 input[type="file"] {
     display: none;
@@ -222,7 +234,7 @@ button {
     border-radius: 4px;
     background-image: linear-gradient(white, lightgray);
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }
 .upload {
     color: black;
@@ -230,21 +242,25 @@ button {
     border-radius: 4px;
     background-image: linear-gradient(white, lightgray);
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }`
                 };
             });
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 darkmode.checked = true;
-                style.innerHTML = `body {
+                style.innerHTML = `@font-face {
+    font-family: Nunito;
+    src: url("Nunito-Regular.ttf");
+}
+body {
     background-color: black;
     color: white;
-    font-family: cursive;
+    font-family: Nunito;
 }
 option {
     background-color: black;
     color: white;
-    font-family: cursive;
+    font-family: Nunito;
 }
 select {
     color: white;
@@ -252,7 +268,7 @@ select {
     border-radius: 4px;
     background-image: linear-gradient(gray, black);
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }
 input {
     background-color: black;
@@ -260,7 +276,7 @@ input {
     padding: 1px;
     border-radius: 4px;
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }
 input[type="file"] {
     display: none;
@@ -271,7 +287,7 @@ button {
     border-radius: 4px;
     background-image: linear-gradient(gray, black);
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }
 .upload {
     color: white;
@@ -279,7 +295,7 @@ button {
     border-radius: 4px;
     background-image: linear-gradient(gray, black);
     border: 1px solid gray;
-    font-family: cursive;
+    font-family: Nunito;
 }`
             };
             enableice.addEventListener("change", function() {
