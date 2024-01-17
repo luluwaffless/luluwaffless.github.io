@@ -32,19 +32,24 @@
                 };
                 return array;
             };
+            function stopPreview() {
+                currentPreview.pause();
+                document.getElementById("leftPreview").innerHTML = "play preview"
+                document.getElementById("rightPreview").innerHTML = "play preview"
+                currentPreview = undefined;
+            };
             function Preview(side) {
                 let url;
+                if (currentPreview) stopPreview();
                 if (side == "left") {
                     url = detailed[currentLeft].preview;
+                    document.getElementById("leftPreview").innerHTML = "pause preview"
                 } else {
                     url = detailed[currentRight].preview;
+                    document.getElementById("rightPreview").innerHTML = "pause preview"
                 };
                 currentPreview = new Audio(url);
                 currentPreview.play();
-            };
-            function stopPreview() {
-                currentPreview.pause();
-                currentPreview = undefined;
             };
             function initList() {
                 var n = 0;
@@ -196,9 +201,9 @@
                     }
                 }
                 str += "<\/table>";
-                document.getElementById("resultField").innerHTML = str;
+                document.getElementById("result").innerHTML = str;
                 document.getElementById('mainTable').style = 'display: none;'
-                document.getElementById("resultField").style = 'text-align: center;';
+                document.getElementById("result").style = 'text-align: center;';
             }
             function showImage() {
                 var str0 = "Battle #" + numQuestion + `<br>${Math.floor((finishSize * 100) / totalSize)}% sorted`;
@@ -262,6 +267,9 @@
             button {
                 font-family: "CircularSpotifyTxT-Book";
             }
+            a {
+                color: blue;
+            }
         </style>
     </head>
     <body>
@@ -271,32 +279,38 @@
                 <span>
                     <b>Welcome to the Laufey Song Sorter!</b><br>Pick what song you like better in each battle to get an accurate list of your favorite songs.<br>Note: hitting 'No Opinion' or 'I Like Both' frequently may negatively affect your results.<br><br>
                 </span>
-                <button onclick="namMember = shuffle(namMember); initList(); showImage(); document.getElementById('mainTable').style = ''; document.getElementById('start').remove();">Start sorting!</button>
+                <button onclick="namMember = shuffle(namMember); initList(); showImage(); document.getElementById('battle').style = ''; document.getElementById('start').remove();">Start sorting!</button>
             </div>
-            <table id="mainTable" style="display: none;">
-                <tbody>
-                    <tr>
-                        <td id="battleNumber" colspan="3" style="padding-bottom: 10px;" style="text-align: center;">
-                            <b>Battle #1<br>0% sorted.</b>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td id="leftField" onmouseover="Preview('left')" onmouseout="stopPreview()" onclick="if (finishFlag == 0) sortList(-1);" rowspan="2" style="text-align: center;"></td>
-                        <td class="middleField" onclick="if (finishFlag == 0) sortList(0);" style="text-align: center; background-color: #80ff80;">
-                            I Like Both
-                        </td>
-                        <td id="rightField" onmouseover="Preview('right')" onmouseout="stopPreview()" onclick="if (finishFlag == 0) sortList(1);" rowspan="2" style="text-align: center;"></td>
-                    </tr>
-                    <tr>
-                        <td class="middleField" onclick="if (finishFlag == 0) sortList(0);" style="text-align: center; background-color: #ffff80;">
-                            No Opinion
-                        </td>
-                    </tr>
-                </tbody>
-                <br>
-                <br>
-            </table>
-            <div id="resultField" style="display: none;"><br></div>
+            <div id="battle" style="display: none;">
+                <table id="mainTable">
+                    <tbody>
+                        <tr>
+                            <td id="battleNumber" colspan="3" style="padding-bottom: 10px;" style="text-align: center;">
+                                <b>Battle #1<br>0% sorted.</b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td id="leftField" onclick="if (finishFlag == 0) sortList(-1);" rowspan="2" style="text-align: center;"></td>
+                            <td class="middleField" onclick="if (finishFlag == 0) sortList(0);" style="text-align: center; background-color: #80ff80;">
+                                I Like Both
+                            </td>
+                            <td id="rightField" onclick="if (finishFlag == 0) sortList(1);" rowspan="2" style="text-align: center;"></td>
+                        </tr>
+                        <tr>
+                            <td class="middleField" onclick="if (finishFlag == 0) sortList(0);" style="text-align: center; background-color: #ffff80;">
+                                No Opinion
+                            </td>
+                        </tr>
+                    </tbody>
+                    <br>
+                    <br>
+                </table>
+                <div style="display: inline;">
+                    <div style="text-align: left;"><a id="leftPreview" href="#" onclick="if (document.getElementById('leftPreview').innerHTML == 'pause preview') { stopPreview() } else { Preview('left') }" >play preview</a></div>
+                    <div style="text-align: right;"><a id="rightPreview" href="#" onclick="if (document.getElementById('rightPreview').innerHTML == 'pause preview') { stopPreview() } else { Preview('right') }">play preview</a></div>
+                </div>
+            </div>
+            <div id="result" style="display: none;"><br></div>
         </div>
     </body>
 </html>

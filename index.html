@@ -5,21 +5,23 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>luca4s - Um "desenvolvedor" sem futuro.</title>
+        <title>luuccss</title>
         <style>
             @font-face {
                 font-family: Nunito;
                 src: url("Nunito-Regular.ttf");
             }
             body {
-                background: url("images/bg.png") no-repeat center fixed;
+                color: white;
+                background: url("bg.png") no-repeat center fixed;
                 background-size: cover;
                 font-family: Nunito, Calibri;
                 font-weight: lighter;
                 overflow: hidden;
             }
             button {
-                background-color: rgb(245, 245, 245);
+                color: white;
+                background-color: rgb(37, 37, 38);
                 font-family: Nunito, Calibri;
                 box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
                 border-radius: 8px;
@@ -29,47 +31,31 @@
                 margin: 5px;
             }
             .center {
+                color: white;
                 position: absolute;
                 left: 50%;
                 top: 50%;
                 transform: translate(-50%, -50%);
                 padding: 10px;
                 margin: 10px;
-                background-color: white;
+                background-color: rgb(25, 25, 25);
                 border-radius: 8px;
                 text-align: center;
                 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             }
         </style>
-        <link rel="icon" href="images/favicon.ico">
+        <link rel="icon" href="favicon.ico">
     </head>
     <body>
         <div class="center">
-            <img id="toro" style="width: 50%; height: 50%; border-radius: 10px;" src="images/toro.png">
-            <br>
-            <audio id="audio" controls="true" autoplay="false" loop="true">
-                <source src="audio/charliesinferno.mp3" type="audio/mpeg">
-                seu navegador não tem suporte a áudio.
-            </audio>
-            <script type="text/javascript">
-                document.getElementById("audio").addEventListener("pause", function() {
-                    document.getElementById("toro").src = "images/toro.png";
-                });
-                document.getElementById("audio").addEventListener("play", function() {
-                    document.getElementById("toro").src = "images/toro.gif";
-                });
-            </script>
-            <br>
             <span style="font-size: x-large; font-weight: bold;">bem-vindo a minha página!</span>
             <br>
             <span style="font-size: large;">links:</span>
             <div>
-                <button onclick="window.location.href = `//github.com/luca4s`">GitHub</button><br>
-                <button onclick="window.location.href = `/countdown`">Contagem regressiva</button><br>
-                <button onclick="window.location.href = `/watch`">watch</button><br>
+                <button onclick="window.location.href = `https://github.com/luuccss`">github</button><br>
+                <button onclick="window.location.href = `/countdown`">contagem regressiva</button><br>
                 <button onclick="window.location.href = `/focus`">focus</button><br>
-                <button onclick="window.location.href = `/downloads`">Downloads</button><br>
-                <button onclick="window.location.href = `/rbb-countdown`">RBB Countdown</button><br>
+                <button onclick="window.location.href = `/laufey-sorter`">laufey sorter</button>
             </div>
         </div>
     </body>

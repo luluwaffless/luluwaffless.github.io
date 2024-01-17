@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="favicon.png">
+        <title>watch ▶</title>
+        <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+        <style>
+            @font-face {
+                font-family: Nunito;
+                src: url("https://luuccss.github.io/Nunito-Regular.ttf");
+            }
+            body {
+                text-align: center;
+                font-family: Nunito;
+                background-color: rgb(25, 25, 25);
+                color: rgb(248, 249, 250);
+            }
+            video {
+                width: 100%;
+                height: 100%;
+            }
+            img {
+                width: 25%;
+                height: 25%;
+            }
+            a {
+                color: rgb(248, 249, 250);
+            }
+            #center {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 10px;
+                margin: 10px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px #000000;
+                background-color: rgb(37, 37, 38);
+            }
+            #videos {
+                display: inline-block;
+            }
+            #video {
+                padding: 10px;
+                margin: 10px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px #000000;
+                background-color: rgb(57, 57, 58);
+            }
+        </style>
+    </head>
+    <body>
+        <div id="center">
+            <a href="https://luuccss.github.io/watch" style="font-weight: bold; font-size: large;">watch ▶</a><br>
+            <div id="videos"></div>
+        </div>
+        <script type="text/javascript">
+            const query = new URLSearchParams(window.location.search);
+            if (query.get("v")) {
+                document.getElementById("videos").innerHTML += `<video controls autoplay><source src="https://sleepylucapis.herokuapp.com/watch?v=${query.get("v")}" type="video/mp4">loading...</video>`
+            } else {
+                $.ajax({
+                    url: "https://sleepylucapis.herokuapp.com/watch",
+                    contentType: "application/json",
+                    method: "GET",
+                    success: function(data) {
+                        var videoelements = ""
+                        data["videos"].forEach(video => {
+                            videoelements += `<div id="video"><a href="?v=${video["url"]}"><img src="https://sleepylucapis.herokuapp.com/watch?i=${video["url"]}"><br><span>${video["name"]}</span></a></div>`
+                        });
+                        document.getElementById("videos").innerHTML += videoelements
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
