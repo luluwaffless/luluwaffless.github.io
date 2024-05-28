@@ -4,7 +4,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script>
+            const id = new URLSearchParams(window.location.search).get("placeId");
             window.location.href = "roblox://experiences/start" + window.location.search;
+            window.location.href = id ? `https://www.roblox.com/games/${id}` : "https://www.roblox.com/";
         </script>
     </head>
 </html>
