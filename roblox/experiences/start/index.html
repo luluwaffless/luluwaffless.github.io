@@ -1,9 +1,0 @@
-<html>
-    <script>
-        const id = new URLSearchParams(window.location.search).get("placeId");
-        window.location.href = "roblox://experiences/start" + window.location.search;
-        setTimeout(() => {
-            window.location.href = id ? `https://www.roblox.com/games/${id}` : "https://www.roblox.com/";
-        }, 60000);
-    </script>
-</html>
