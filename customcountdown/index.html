@@ -349,7 +349,7 @@ button {
                         };
                         if (date.getTime() >= finaltimestamp && !defrost) {
                             defrost = true;
-                            iceaudio.play();
+                            if (playice) iceaudio.play();
                             document.getElementById("player.style").innerHTML = `#player {
     position: relative;
     width: 490px;
