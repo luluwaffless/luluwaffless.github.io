@@ -1,0 +1,114 @@
+body {
+    text-align: center;
+    font-family: monospace;
+    color: hsl(230, 30%, 70%);
+    background-color: hsl(230, 90%, 10%);
+}
+
+.input {
+    display: inline-flex;
+    margin-bottom: 0.75em;
+}
+
+input {
+    text-align: center;
+    border-radius: 0.25em;
+    font-family: monospace;
+    -moz-appearance: textfield;
+    border-top-right-radius: 0;
+    color: hsl(230, 30%, 70%);
+    border-bottom-right-radius: 0;
+    border: 1px solid hsl(230, 30%, 70%);
+    background-color: hsl(230, 90%, 10%);
+}
+
+button {
+    padding: 0; /* Ensure no padding inside the button */
+    margin: 0; /* Ensure no margin around the button */
+    text-align: center;
+    border-left: none;
+    border-radius: 0.25em;
+    font-family: monospace;
+    border-top-left-radius: 0;
+    color: hsl(230, 30%, 70%);
+    border-bottom-left-radius: 0;
+    border: 1px solid hsl(230, 30%, 70%);
+    background-color: hsl(230, 90%, 10%);
+    margin-left: -1px; /* Pull the input closer */
+    display: flex; /* Use flexbox to center the image */
+    align-items: center; /* Vertically center the image */
+    justify-content: center; /* Horizontally center the image */
+    width: 2em; /* Set a fixed width for the button (adjust as needed) */
+    height: 2em; /* Set a fixed height for the button (adjust as needed) */
+}
+
+button img {
+    padding: 0; /* Ensure no padding around the image */
+    margin: 0; /* Ensure no margin around the image */
+    width: 1.5em; /* Adjust the image size to fill the button */
+    height: 1.5em; /* Adjust the image size to fill the button */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+}
+
+#userDetails {
+    margin: auto;
+    padding: 0.5em;
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    font-size: xx-large;
+    border-radius: 0.5em;
+    justify-content: center;
+    border: 1px solid hsl(230, 30%, 70%);
+    background-color: hsla(230, 30%, 70%, 0.125);
+}
+
+#userDetails img {
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    background-color: hsl(230, 30%, 70%);
+}
+
+.img, .text {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+a {
+    color: hsl(230, 20%, 80%);
+    text-decoration: none;
+}
+
+b {
+    color: hsl(230, 10%, 90%);
+    font-size: large;
+}
+
+.true {
+    color: hsl(110, 30%, 70%);
+}
+
+.false {
+    color: hsl(350, 30%, 70%);
+}
+
+#cards {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.card {
+    padding: 1em;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 1em;
+    border: 1px solid hsl(230, 30%, 70%);
+    background-color: hsla(230, 30%, 70%, 0.125);
+}
